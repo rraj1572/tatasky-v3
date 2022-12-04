@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         sName: req.query.sname,
         token: req.query.tkn,
         ent: req.query.ent.split('_'),
-        tsActive: req.query.sid.split('_')[1] === "D" ? false : true
+        tsActive: true
     };
     if (uData.tsActive) {
         let m3uString = await generateM3u(uData);
@@ -32,7 +32,7 @@ const getAllChans = async () => {
     let err = null;
     let res = null;
 
-    await fetch("https://ts-api.videoready.tv/content-detail/pub/api/v1/channels?limit=599", requestOptions)
+    await fetch("https://ts-api.videoready.tv/content-detail/pub/api/v1/channels?limit=616", requestOptions)
         .then(response => response.text())
         .then(result => res = JSON.parse(result))
         .then(r => r)
